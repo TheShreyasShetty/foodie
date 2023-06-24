@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:food_delivery/widgets/big_text.dart';
+import 'package:food_delivery/widgets/small_text.dart';
 
 import '../utils/colors.dart';
 
@@ -27,8 +29,13 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   children: [
                     Column(
                       children: [
-                        Text("Country"),
-                        Text("City"),
+                        BigText(text: "INDIA", color: AppColors.mainColor,size: 30),
+                        Row(
+                          children: [
+                            SmallText(text: "Udupi", color: Colors.black54,),
+                            Icon(Icons.arrow_drop_down_rounded)
+                          ],
+                        )
                       ],
                     ),
                     Center(
