@@ -5,6 +5,7 @@ import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
 import '../utils/colors.dart';
+import 'food_page_body.dart';
 
 class MainFoodPage extends StatefulWidget {
   const MainFoodPage({super.key});
@@ -52,7 +53,8 @@ class _MainFoodPageState extends State<MainFoodPage> {
                   ],
                 ),
               ),
-            )
+            ),
+            FoodPageBody(),
           ],
       ),
     );
