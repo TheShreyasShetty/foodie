@@ -1,3 +1,5 @@
+// import 'dart:html';
+
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,6 +43,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
+        // slider section
         Container(
           height: Dimensions.pageView,
           child: PageView.builder(
@@ -50,6 +53,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               return _buildPageItem(position);
             }),
         ),
+        // dots
         DotsIndicator(
           dotsCount: 5,
           position: _currPageValue,
@@ -60,6 +64,97 @@ class _FoodPageBodyState extends State<FoodPageBody> {
           activeShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
           ),
         ),
+        // popular texts
+        SizedBox(height: Dimensions.height30,),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              BigText(text: "Popular"),
+              SizedBox(width: Dimensions.width10,),
+              Container(
+                margin: const EdgeInsets.only(bottom: 3),
+                child: BigText(text: ".", color:Colors.black26),
+              ),
+              SizedBox(width: Dimensions.width10,),
+              Container(
+                margin: const EdgeInsets.only(bottom: 2),
+                child: SmallText(text: "Food Pairing",),
+              )
+            ],
+          ),
+        ),
+        // List of Popular Food
+        ListView.builder(
+              physics: NeverScrollableScrollPhysics(),
+              // physics: AlwaysScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: 10,
+              itemBuilder: (context,index){
+                return Container(
+                  margin: EdgeInsets.only(left: Dimensions.width20, right: Dimensions.width20, bottom: Dimensions.height10),
+                  child: Row(
+                    children: [
+                      // image
+                      Container(
+                        width:Dimensions.listViewImgSize,
+                        height: Dimensions.listViewImgSize,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Dimensions.radius20),
+                          color: Colors.white38,
+                          image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: AssetImage(
+                                "assets/image/food0.png"
+                            ),
+                          ),
+                        ),
+                      ),
+                      // text Container
+                      Expanded(
+                        child: Container(
+                        height: Dimensions.listViewTextContSize,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(Dimensions.radius20),
+                            bottomRight: Radius.circular(Dimensions.radius20),
+                          ),
+                          color: Colors.white70,
+                        ),
+                          child: Padding(
+                            padding: EdgeInsets.only(left: Dimensions.width10, right: Dimensions.width10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                BigText(text: "South Thali"),
+                                SizedBox(height: Dimensions.height10,),
+                                SmallText(text: "Rice Sambar Dal Puri Appalam"),
+                                SizedBox(height: Dimensions.height10,),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconAndTextWidget(icon: Icons.circle_sharp,
+                                        text: "Normal",
+                                        iconColor: AppColors.iconColor1),
+                                    IconAndTextWidget(icon: Icons.location_on,
+                                        text: "2 km",
+                                        iconColor: AppColors.mainColor),
+                                    IconAndTextWidget(icon: Icons.access_time_rounded,
+                                        text: "20 min",
+                                        iconColor: AppColors.iconColor2)
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                      ),
+                      )
+                    ],
+                  ),
+                );
+              }),
       ],
     );
   }
