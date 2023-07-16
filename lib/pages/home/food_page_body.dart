@@ -4,11 +4,12 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery/utils/colors.dart';
+import 'package:food_delivery/widgets/app_column.dart';
 import 'package:food_delivery/widgets/big_text.dart';
 import 'package:food_delivery/widgets/icon_and_text_widget.dart';
 import 'package:food_delivery/widgets/small_text.dart';
 
-import '../utils/dimensions.dart';
+import '../../utils/dimensions.dart';
 
 class FoodPageBody extends StatefulWidget {
   const FoodPageBody({super.key});
@@ -87,7 +88,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
         ),
         // List of Popular Food
         ListView.builder(
-              physics: NeverScrollableScrollPhysics(),
+            physics: NeverScrollableScrollPhysics(),
               // physics: AlwaysScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: 10,
@@ -225,41 +226,7 @@ class _FoodPageBodyState extends State<FoodPageBody> {
               ),
               child: Container(
                 padding: EdgeInsets.only(top: Dimensions.height15,left: 15,right: 15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BigText(text: "Indian Side"),
-                    SizedBox(height: Dimensions.height10),
-                    Row(
-                      children: [
-                        Wrap(
-                          children: List.generate(5, (index) => Icon(Icons.star, color: AppColors.mainColor,size: 15,)),    // => this is used the return the function
-                        ),
-                        SizedBox(width: 10,),
-                        SmallText(text: "4.5"),
-                        SizedBox(width: 10,),
-                        SmallText(text: "1282"),
-                        SizedBox(width: 10,),
-                        SmallText(text: "comments"),
-                      ],
-                    ),
-                    SizedBox(height: Dimensions.height20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconAndTextWidget(icon: Icons.circle_sharp,
-                            text: "Normal",
-                            iconColor: AppColors.iconColor1),
-                        IconAndTextWidget(icon: Icons.location_on,
-                            text: "2 km",
-                            iconColor: AppColors.mainColor),
-                        IconAndTextWidget(icon: Icons.access_time_rounded,
-                            text: "20 min",
-                            iconColor: AppColors.iconColor2)
-                      ],
-                    )
-                  ],
-                ),
+                child: AppColumn(text: "Indian Side",),
               ),
             ),
          )
