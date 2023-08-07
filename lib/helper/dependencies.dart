@@ -6,7 +6,7 @@ import '../controllers/popular_product_controller.dart';
 
 Future<void> init()async {
   //api client
-  Get.lazyPut(()=>ApiClient(appBaseUrl: "https://www.dbestech.com"));
+  Get.lazyPut(()=>ApiClient(appBaseUrl: "https://mvs.bslmeiyu.com"));
 
   //repos
   Get.lazyPut(() => PopularProductRepo(apiClient: Get.find()));
