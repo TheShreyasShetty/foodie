@@ -8,6 +8,7 @@ class ApiClient extends GetConnect implements GetxService{
   ApiClient({required this.appBaseUrl}){
     baseUrl = appBaseUrl;
     timeout = Duration(seconds: 30);
+    token = "";
     // telling that the content api receiving from json file and the UTF-8 is decoding and encoding section
     _mainHeaders = {
       'Content-type':'application/json; charset=UTF-8',
